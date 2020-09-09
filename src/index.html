@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>NASA Photos</title>
  
 </head>
 <body>
-
   
+
+  <div  class="container">
+    <div class="jumbotron">
+      <h3 class="display-4">NASA Photos</h3>
+    </div>
+    <label for="search-input">Enter an item to search:</label>
+    <input type="text" id="search-input">
+    <button id='search-button'>Search</button>
+    <button id="random-date">Random Astronomy Pic Of The Day!</button>
+    <div id="image-search-results" class="carousel slide" data-interval="false" data-ride="carousel">
+      <div class="carousel-inner">
+      </div>
+      <a class="carousel-control-prev" href="#image-search-results" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#image-search-results" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div id="random-date-results">
+      <img src="" id="randomImage" class="">
+    </div>
+  </div>
 </body>
 </html>

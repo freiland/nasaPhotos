@@ -1,0 +1,41 @@
+body{
+  background-color: rgb(163, 162, 179);
+  color: rgb(24, 26, 25);
+}
+.card{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.search-card img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carousel{
+  display: none;
+}
+
+.jumbotron{
+  text-align: center;
+  background-color: rgb(221, 17, 17);
+}
+.random-card{
+  background-color: black;
+  color: white;
+  
+}
+.random-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.title-head {
+  font-size: xx-large;
+}
