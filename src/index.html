@@ -5,16 +5,15 @@
  
 </head>
 <body>
-  
-
   <div  class="container">
     <div class="jumbotron">
       <h3 class="display-4">NASA Photos</h3>
     </div>
     <label for="search-input">Enter an item to search:</label>
     <input type="text" id="search-input">
-    <button id='search-button'>Search</button>
-    <button id="random-date">Random Astronomy Pic Of The Day!</button>
+    <button id='search-button' class="btn btn-outline-danger">Search</button>
+    <button id="random-date" class="btn btn-outline-danger">Random Astronomy Pic Of The Day!</button>
+    <button id='earth-button' class="btn btn-outline-danger">Random Earth Picture</button>
     <div id="image-search-results" class="carousel slide" data-interval="false" data-ride="carousel">
       <div class="carousel-inner">
       </div>
@@ -28,8 +27,20 @@
       </a>
     </div>
     <div id="random-date-results">
-      <img src="" id="randomImage" class="">
+      <img src="" id="randomImage" >
     </div>
+    <p>Check out the Asteroids!</p> 
+    <div id="asteroid"> 
+      <input type="date" id="date" name="get-date"
+        value="1930-01-10"
+        min="1930-01-01" max="2020-09-15">
+        <button class="btn-success" id="button">List</button>
+    <ul id="displayList"></ul>
+    </div> 
+    <div id="earthPic">
+      <img src="" id="earthImage">
+      </div>
+       
   </div>
 </body>
 </html>

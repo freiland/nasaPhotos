@@ -6,6 +6,15 @@ body{
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.search-card{
+  /* background-color: black;
+  color: red;
+  border-color: red;
+  border-width: 5px; */
+
 }
 .search-card img{
   max-width: 100%;
@@ -34,8 +43,17 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
-
+.container{
+  background-color: black;
+}
 
 .title-head {
   font-size: xx-large;
+}
+label{
+  color: red;
+}
+
+p {
+  color: whitesmoke;
 }

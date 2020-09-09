@@ -1,8 +1,9 @@
-export class dailyImage {
+export class dailyEarth {
   static getImage(randomDate) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest ();
-      const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}&date=${randomDate}`;
+      //const url = `https://api.nasa.gov/planetary/apod?api_key=${process.//env.API_KEY}&date=${randomDate}`;
+      const url = `https://api.nasa.gov/EPIC/api/natural/date/${randomDate}?api_key=${process.env.API_KEY}`;
       request.onload = function () {
         if (this.status === 200) {
           resolve(request.response);
@@ -29,23 +30,4 @@ export function randomDate(start, end) {
   if (day.length < 2) day = '0' + day;
 
   return [year, month, day].join('-');
-}
-
-
-export function asteroidList(startDate,endDate){
-  return new Promise(function(resolve, reject) { 
-    let request = new XMLHttpRequest();
-    const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${process.env.API_KEY}`;
-    request.onload = function() {
-      if (this.status === 200) {
-        resolve(request.response);
-      } else {
-        reject(request.response);
-      }
-    }
-    request.open("GET", url, true);
-    request.send();
-  });
-
-
 }
