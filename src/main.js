@@ -22,7 +22,7 @@ function writeImages(body) {
   //console.log(html);
   $('.carousel-inner').html(html);
   
-}
+} 
 
 function addRandom (body) {
   let html = '';
