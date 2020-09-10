@@ -9,19 +9,16 @@ body{
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.search-card{
-  /* background-color: black;
-  color: red;
-  border-color: red;
-  border-width: 5px; */
 
-}
 .search-card img{
   max-width: 100%;
   height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.search-card p {
+  color: black;
 }
 .carousel{
   display: none;
@@ -56,4 +53,32 @@ label{
 
 p {
   color: whitesmoke;
+}
+#displayList{
+  color: red;
+  font-size:large;
+}
+
+
+
+
+
+#earthPic img {
+  
+  max-width: 55%;
+  height: auto;
+  
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#displayList li{
+  color: red;
+  font-size: x-large;
+}
+#displayList li ul li{
+  color:white;
+  font-size:large;
 }

@@ -10,25 +10,25 @@ export class dailyImage {
         else {
           reject(request.response);
         }
-      }
+      };
       request.open("GET", url, true);
       request.send();
 
-    })
+    });
   }
 
 }
 
 export function randomDate(start, end) {
-  var d = new Date(start.getTime() + Math.random() * (end.getTime() -                     start.getTime())),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+  let d = new Date(start.getTime() + Math.random() * (end.getTime() -  start.getTime())),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
 
   if (month.length < 2) month = '0' + month;
   if (day.length < 2) day = '0' + day;
 
-  return [year, month, day].join('-');
+  return [year, month, day].join('-'); //"2005-02-15"
 }
 
 
@@ -42,7 +42,7 @@ export function asteroidList(startDate,endDate){
       } else {
         reject(request.response);
       }
-    }
+    };
     request.open("GET", url, true);
     request.send();
   });

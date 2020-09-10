@@ -7,22 +7,34 @@ import {dailyImage, asteroidList} from './randomDate.js';
 import {dailyEarth} from './randomEarth';
 
 function randomDate(start, end) {
-  var d = new Date(start.getTime() + Math.random() * (end.getTime() -                     start.getTime())),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+  let d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
 
   if (month.length < 2) month = '0' + month;
   if (day.length < 2) day = '0' + day;
 
   return [year, month, day].join('-');
 }
+
+function randomDateNatural(start, end) {
+  let d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('/');
+}
 function writeImages(body) {
   let html = '';
   html += `<div class="carousel-item active" >`;
   html += `<div class='card search-card col-6'><div class='card-header'>${body.collection.items[0].data[0].title}</div>`;
   html += `<div class='card-body'><img src=${body.collection.items[0].links[0].href} >`;
-  html += `${body.collection.items[0].data[0].description}`;
+  html += `<p>${body.collection.items[0].data[0].description}</p>`;
   html += `</div></div></div>`;
   for(let i = 1; i < 100 && i < body.collection.items.length; i++) {
     html += `<div class="carousel-item " >`;
@@ -39,33 +51,37 @@ function writeImages(body) {
 function addRandom (body) {
   let html = '';
   html += `<div class="card random-card">`;
-  html += `<div class="card-header title-head">${body.title}</div>`
+  html += `<div class="card-header title-head">${body.title}</div>`;
   html += `<div class="card-body"><img src=${body.url}>`;
   //html += `<p>${body.explanation}</p>`;
-  html += `</div></div>`
+  html += `</div></div>`;
 
-$("#random-date-results").html(html);
+  $("#random-date-results").html(html);
 }
 
 //function addEarth (body) {
-  //let html = '';
-  //html += `<div class="card random-card">`;
-  //html += `<div class="card-header title-head">${body.title}</div>`
-  //html += `<div class="card-body"><img src=${body.url}>`;
-  //html += `<p>${body.explanation}</p>`;
-  //html += `</div></div>`
+//let html = '';
+//html += `<div class="card random-card">`;
+//html += `<div class="card-header title-head">${body.title}</div>`
+//html += `<div class="card-body"><img src=${body.url}>`;
+//html += `<p>${body.explanation}</p>`;
+//html += `</div></div>`
 
 //$("#random-date-results").html(html);
 //}
 
-function printAsteroidList (body) {
+function printAsteroidList (body, date) {
   let html = '';
   console.log(body);
-  html += `<li>${body.near_earth_objects['2020-09-9'][0].name}</li>`;
+  for(let i = 0; i < body.near_earth_objects[date].length; i++ ) {
+    html += `<li>Name: ${body.near_earth_objects[date][i].name}<ul>`;
+    html += `<li>Size: ${body.near_earth_objects[date][i].estimated_diameter.feet.estimated_diameter_min} -`;
+    html += ` ${body.near_earth_objects[date][i].estimated_diameter.feet.estimated_diameter_max} feet diameter</li></ul></li>`;
+  }
+ 
+  //console.log(html);
   
-  console.log(html);
-  
-  //$('#displayList').append(html);
+  $('#displayList').html(html);
 }
 
 
@@ -74,7 +90,8 @@ $(document).ready(function() {
   $('#search-button').click(function () {
     $('#image-search-results').show();
     $('#random-date-results').hide();
-    $('#random-earth-results').hide();
+    $('#earthPic').hide();
+    $('#asteroid').hide();
     
     let searchTerm = $('#search-input').val();
     $('#search-input').val('');
@@ -93,8 +110,9 @@ $(document).ready(function() {
   });
   $("#random-date").click( function() {
     $('#image-search-results').hide();
-    $('#random-earth-results').hide();
+    $('#earthPic').hide();
     $('#random-date-results').show();
+    $('asteroid').hide();
     let date = randomDate(new Date(1996, 0, 1), new Date()); 
     let promise = dailyImage.getImage(date);
     promise.then(function(response) {
@@ -110,30 +128,49 @@ $(document).ready(function() {
   $("#earth-button").click( function() {
     $('#image-search-results').hide();
     $('#random-date-results').hide();
-    $('#random-earth-results').show();
-    let date = randomDate(new Date(2016, 0, 1), new Date()); 
+    $('#earthPic').show();
+    $('#asteroid').hide();
+    
+    let date = randomDateNatural(new Date(2016, 0, 1), new Date()); 
+    console.log(date);
     let promise = dailyEarth.getImage(date);
     promise.then(function(response) {
       const body = JSON.parse(response);
-      //addRandom(body);
+      console.log(body);
       let img = body[0].image;
+      let picDate = body[0].date;
+      
       console.log(img);
-      $("#earthImage").attr("src", `https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/${img}.png`);
+      //  2020/9/9
+      const earthURL = `https://epic.gsfc.nasa.gov/archive/natural/${date}/jpg/${img}.jpg`;
+      
+      console.log(earthURL);
+      
+      $("#earthImage").attr("src", earthURL);
+      $("#image-date").text(`Earth photographed on ${picDate}`);
       //$("randomImage").append(body.explanation);
     }, function(error) {
       console.log(error);
     });
     // https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/epic_1b_20151031074844.png
+
+    //https://epic.gsfc.nasa.gov/api/enhanced/date/2015-10-31
   });
 
   $('#button').click(function () {
-    let promise = asteroidList('2020-09-09', '2020-09-02');
+    $('#image-search-results').hide();
+    $('#random-date-results').hide();
+    $('#earthPic').hide();
+    $('#asteroid').show();
+    console.log($('#date').val());
+    let date = $('#date').val();
+    let promise = asteroidList(date, date);
     promise.then(function (response) {
       const body = JSON.parse(response);
-      printAsteroidList(body);
+      printAsteroidList(body, date);
     }, function(error) {
       console.log(error);
-    })
+    });
 
     
   });

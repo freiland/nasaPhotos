@@ -1,47 +1,51 @@
-# _{Application Name}_
+# _NASA Photos_
 
-#### _{Brief description of application}, 8/21/20_
+#### _This program accesses different NASA api's and based on user input will show different information/photos, 9/10/2020_
 
-#### By _**Joseph Nilles**_
+#### By _**Joseph Nilles, Forrest Reiland, Ophelia Swen**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_A user may enter a search term and images stored in the NASA Image and Video Library API that match the search term are returned to the user. A user may click through the images using a carousel. A user can click a button that returns a random image from the Astronomy Picture of the Day API. The image is returned with a short title description. Similarily, a user can click a button which returns a random image of Earth photographed from space. This feature pulls images from NASA's Earth Polychromatic Imaging Camera which has been photographing Earth daily since 2015. The site also allows a user to select any date using an interactive calender feature. The calender returns a list of the closest asteroids to Earth on the input date along with the size of the asteroid. This feature pulls data from NASA's Near Earth Object Web Service API._
+
+_To generate your unique API key visit api.nasa.gov. Fill out the required information to generate your API key. Your API key should be stored within the main file directory in a file named ".env". The API should be stored in the variable "API_KEY". Furthermore, the .env file should not be made public or shared to Github._
 
 ### Specs
 | Spec | Input | Output |
 | :-------------     | :------------- | :------------- |
-| **add the value of all the symbols** | 66 |LXVI |
-| **there may not be more than three of the same characters in a row. Instead, you switch to subtraction.** | 90 | XC |
-| **separate ones, tens, hundreds, and thousands**| 99 | XCIX |
-| **check user input for proper entry**| 2.5 | return error |
-
+|**Program takes user input and returns photos from NASA Image and Video Library API** | Input: "Mars" | Photo Generates |
+|**Program takes user input and returns photos from NASA APOD API** | Click Button | Photo Generates |
+|**Program takes user input and returns photos from NASA EPIC API**| Click Button | Photo Generates |
+|**Program takes user input and returns photos from NASA Near Earth Object Web Service API**| Input: "09/10/2020"  | Name: (2020 PU) Size: 173.0374186925 - 386.9234308474 feet diameter |
 
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* _clone this repository_
+* _navigate to the root dir of this project_
+* _in terminal do command npm install_
+* _generate an api key at api.nasa.gov_
+* _create a .env file in the root dir_
+* _in .env file add API_KEY=[your api key]_
+* _in terminal do command npm run start_
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+
+_To generate an api key to use NASA api's go to api.nasa.gov. Generate a key following their instructions and enter the key into the .env file as listed above._
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+_No Known bugs_
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_Contact Information: Joseph Nilles: jbnilles24@gmail.com, Ophelia Swen: ophelia.swen@gmail.com , Forrest Reiland: freiland@email.arizona.edu_
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+_This project uses HTML, CSS, Bootstrap, jQuery, and JavaScript, with the help of Postman._
 
 ### License
 
 *This software is available with an MIT license*
 
-Copyright (c) 2016 **_{List of contributors or company name}_**
+Copyright (c) 2020 **_Joseph Nilles, Ophelia Swen, Forrest Reiland_**
